@@ -1,6 +1,8 @@
 ---
 name: ai-product-teardown
 description: Reverse-engineer an AI product from authenticated UI evidence, producing traceable user journeys, Agent I/O contracts, functional-equivalent prompts, or layered product architecture. Use for read-only product teardowns grounded in chats, canvases, assets, states, errors, and official sources; do not use for generic market research based only on promotional pages.
+metadata:
+  version: "2.0.0"
 ---
 
 # AI Product Reverse Engineering
@@ -18,6 +20,8 @@ Select only the mode needed by the user. Do not silently continue into later mod
 5. **Full teardown** — run the four modes in order, pausing for user confirmation between them when the user requests staged validation.
 
 Read [analysis-modes.md](references/analysis-modes.md) for the selected mode. For Architecture mode, also read [architecture-framework.md](references/architecture-framework.md). For any durable report, HTML page, or diagram, read [report-and-visualization.md](references/report-and-visualization.md). For HTML delivery, also read [html-delivery.md](references/html-delivery.md) and reuse [report-template.html](assets/report-template.html) when it helps.
+
+For a staged teardown, multi-artifact delivery pack, or team handoff with explicit acceptance gates, also read [staged-execution-sop.md](references/staged-execution-sop.md). It coordinates artifact dependencies, accepted versions, and mode transitions; it does not replace the selected mode contract or require earlier modes when the user requested only one mode.
 
 ## Operate within the evidence boundary
 
