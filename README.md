@@ -45,7 +45,8 @@ ai-product-teardown/
 │   ├── analysis-modes.md
 │   ├── architecture-framework.md
 │   ├── evidence-and-observation.md
-│   └── html-delivery.md
+│   ├── html-delivery.md
+│   └── report-and-visualization.md
 └── assets/
     └── report-template.html
 ```
@@ -57,6 +58,7 @@ ai-product-teardown/
 - [`analysis-modes.md`](references/analysis-modes.md)：四类拆解任务的固定交付契约。
 - [`architecture-framework.md`](references/architecture-framework.md)：产品分层、上下文、知识、模型和实体架构模板。
 - [`html-delivery.md`](references/html-delivery.md)：HTML 与 Mermaid 交付、渲染和检查要求。
+- [`report-and-visualization.md`](references/report-and-visualization.md)：答案优先的轻量报告结构、最小有效可视化与交付检查。
 - [`report-template.html`](assets/report-template.html)：可复用的响应式 HTML 报告模板。
 
 ## 说明

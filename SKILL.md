@@ -17,7 +17,7 @@ Select only the mode needed by the user. Do not silently continue into later mod
 4. **Architecture** — combine accepted earlier artifacts into end-to-end flows, layers, data entities, state, asset, model, billing, safety, and infrastructure views.
 5. **Full teardown** — run the four modes in order, pausing for user confirmation between them when the user requests staged validation.
 
-Read [analysis-modes.md](references/analysis-modes.md) for the selected mode. For Architecture mode, also read [architecture-framework.md](references/architecture-framework.md). For HTML delivery, read [html-delivery.md](references/html-delivery.md) and reuse [report-template.html](assets/report-template.html) when it helps.
+Read [analysis-modes.md](references/analysis-modes.md) for the selected mode. For Architecture mode, also read [architecture-framework.md](references/architecture-framework.md). For any durable report, HTML page, or diagram, read [report-and-visualization.md](references/report-and-visualization.md). For HTML delivery, also read [html-delivery.md](references/html-delivery.md) and reuse [report-template.html](assets/report-template.html) when it helps.
 
 ## Operate within the evidence boundary
 
@@ -64,11 +64,13 @@ These rules prevent the most common false conclusions:
 2. **Inventory sources.** List user actions, conversation records, Agent labels, forms and buttons, canvas assets, versions, model selectors, tool results, statuses, errors, billing indicators, and official sources.
 3. **Walk chronologically.** Start at the earliest accessible event. Track triggers, decisions, confirmations, corrections, failures, interruptions, asset changes, and handoffs.
 4. **Cross-check surfaces.** For each claimed transition compare chat, canvas, task state, history, and actual preview or asset existence.
-5. **Build the selected artifact.** Use the relevant contract and table schemas from the mode reference. Keep facts, inference, recommendations, and unknowns visibly separate.
-6. **Trace diagrams back to evidence.** Put evidence IDs in nodes or an adjacent trace table. Label branch conditions and edge semantics.
-7. **Audit completion.** Check coverage of normal, correction, failure, insufficient balance, interruption, retry, and state-conflict paths when evidence exists.
-8. **Render and verify.** If delivering HTML, test it locally, verify navigation and Mermaid rendering, check console errors, and inspect at least one representative viewport.
-9. **Stop at the requested boundary.** Report inaccessible evidence and unresolved questions. Do not proceed into prompt reconstruction or architecture unless requested.
+5. **Distill the answer.** State the decision-useful conclusion first, then organize only the findings, evidence, caveats, and next actions needed to support it.
+6. **Build the selected artifact.** Use the relevant contract and table schemas from the mode reference. Keep facts, inference, recommendations, and unknowns visibly separate.
+7. **Use the smallest useful visual.** Add a table or diagram only when it makes a relationship easier to understand than prose. Define its question and reading path before rendering it.
+8. **Trace diagrams back to evidence.** Put evidence IDs in nodes or an adjacent trace table. Label branch conditions and edge semantics.
+9. **Audit completion.** Check coverage of normal, correction, failure, insufficient balance, interruption, retry, and state-conflict paths when evidence exists.
+10. **Render and verify.** If delivering HTML, test it locally, verify navigation and Mermaid rendering, check console errors, and inspect desktop and narrow viewports.
+11. **Stop at the requested boundary.** Report inaccessible evidence and unresolved questions. Do not proceed into prompt reconstruction or architecture unless requested.
 
 ## Make implementation boundaries explicit
 

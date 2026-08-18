@@ -2,9 +2,13 @@
 
 Use when the user requests an HTML journey, contract report, prompt specification, or architecture report.
 
+First apply [report-and-visualization.md](report-and-visualization.md) to define the report answer, reading path, and necessary visuals. This file covers HTML-specific implementation and verification only.
+
 ## Artifact requirements
 
 - Produce one standalone HTML file unless the user requests a site bundle.
+- Lead with the direct answer or architecture summary, followed by the evidence that supports it.
+- Prefer one clear top-to-bottom reading path over a dashboard grid unless comparison or monitoring is the actual task.
 - Use semantic headings, a visible evidence legend, a sticky or compact section navigator, responsive cards and tables, and printable colors.
 - Keep long evidence text readable with wrapping; make wide tables horizontally scrollable.
 - Use local clickable links for screenshots and prior artifacts when available.
@@ -20,6 +24,8 @@ Use when the user requests an HTML journey, contract report, prompt specificatio
 - Add evidence IDs inside important nodes or in an adjacent trace table.
 - Provide a legend for confirmed, inferred, recommended, risk, and unknown styles.
 - Keep source text copyable when useful.
+- Place a short explanation beside each important diagram: its takeaway, how to read it, and why it matters.
+- Do not add decorative charts, 3D effects, animation, or generated imagery unless they carry analytical meaning.
 
 If the report must work fully offline, bundle Mermaid locally or render diagrams to SVG during generation. If a CDN script is used, disclose that diagrams require network access while the tables and text remain available.
 
