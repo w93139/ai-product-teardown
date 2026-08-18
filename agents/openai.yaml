@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI 产品逆向拆解"
+  short_description: "基于真实页面证据拆解用户旅程、Agent契约与产品架构"
+  brand_color: "#FF4FA3"
+  default_prompt: "使用 $ai-product-teardown 以只读、证据可追溯的方式拆解这个 AI 产品。"
+policy:
+  allow_implicit_invocation: true
