@@ -38,6 +38,7 @@
 
 ```text
 ai-product-teardown/
+├── LICENSE
 ├── SKILL.md
 ├── agents/
 │   └── openai.yaml
@@ -64,3 +65,9 @@ ai-product-teardown/
 ## 说明
 
 本 Skill 用于行为和产品架构分析，不用于恢复目标产品的私有提示词、隐藏思维链、账号凭据或未经公开的后台源码。功能性工具名和语义化数据字段必须明确标记为推导设计，不得冒充目标产品的官方实现。
+
+## 开源许可
+
+本项目采用 [MIT License](LICENSE)。你可以使用、复制、修改和分发本项目，但必须保留许可证和版权声明。
+
+公开提交前请遵守 [Security Policy](SECURITY.md)，不要上传 Cookie、Token、密码、私有聊天、客户素材、未脱敏截图或其他敏感证据。
