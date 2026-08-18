@@ -18,9 +18,31 @@
 - 同时核验聊天、画布、任务状态、历史版本和实际资产。
 - 不声称读取隐藏思维链、官方 System Prompt 或不可见后端实现。
 
+## 安装
+
+Codex 会从个人目录或项目目录发现独立 Skill。安装后不会改动本仓库内容，后续也可以通过普通的 `git pull` 更新。
+
+### 安装到个人目录
+
+适合希望在所有项目中使用本 Skill 的用户：
+
+```bash
+git clone https://github.com/w93139/ai-product-teardown.git "$HOME/.agents/skills/ai-product-teardown"
+```
+
+### 安装到当前项目
+
+在目标 Git 仓库根目录执行：
+
+```bash
+git clone https://github.com/w93139/ai-product-teardown.git .agents/skills/ai-product-teardown
+```
+
+也可以在 Codex 中调用 `$skill-installer`，让它从本仓库地址安装。Codex 通常会自动发现新增或更新的 Skill；如果没有出现，请重启 Codex。目录约定参见 [OpenAI 官方 Skill 文档](https://learn.chatgpt.com/codex/build-skills)。
+
 ## 使用方式
 
-将本仓库放入支持 Skills 的工作目录或个人 Skills 目录，然后调用：
+安装完成后，在 Codex 中输入 `$` 选择本 Skill，或直接调用：
 
 ```text
 使用 $ai-product-teardown，以只读、证据可追溯的方式拆解这个 AI 产品。
@@ -33,6 +55,12 @@
 3. 单 Agent 功能等价 Prompt
 4. 完整产品架构
 5. 分阶段完整拆解
+
+如需更新个人安装：
+
+```bash
+git -C "$HOME/.agents/skills/ai-product-teardown" pull --ff-only
+```
 
 ## 目录
 
