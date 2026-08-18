@@ -1,5 +1,7 @@
 # AI Product Teardown
 
+> 当前版本：v2.0.0
+
 一套基于真实页面证据的 AI 产品逆向拆解 Skill，用于系统化产出：
 
 - 用户旅程与体验问题
@@ -47,7 +49,8 @@ ai-product-teardown/
 │   ├── architecture-framework.md
 │   ├── evidence-and-observation.md
 │   ├── html-delivery.md
-│   └── report-and-visualization.md
+│   ├── report-and-visualization.md
+│   └── staged-execution-sop.md
 └── assets/
     └── report-template.html
 ```
@@ -60,6 +63,7 @@ ai-product-teardown/
 - [`architecture-framework.md`](references/architecture-framework.md)：产品分层、上下文、知识、模型和实体架构模板。
 - [`html-delivery.md`](references/html-delivery.md)：HTML 与 Mermaid 交付、渲染和检查要求。
 - [`report-and-visualization.md`](references/report-and-visualization.md)：答案优先的轻量报告结构、最小有效可视化与交付检查。
+- [`staged-execution-sop.md`](references/staged-execution-sop.md)：分阶段拆解、多交付物交接、验收门和版本变更控制。
 - [`report-template.html`](assets/report-template.html)：可复用的响应式 HTML 报告模板。
 
 ## 说明
