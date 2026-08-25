@@ -1,6 +1,6 @@
 # AI Product Teardown
 
-> 当前版本：v2.1.0
+> 当前版本：v2.2.0
 
 一套基于真实界面、操作截图和可观察状态，对 **AI 产品行为与产品架构** 进行证据化逆向拆解的 Codex Skill。
 
@@ -13,6 +13,7 @@
 - 单 Agent 功能等价 System Prompt
 - 工具、全局上下文与资产数据流
 - As-Is / To-Be 产品架构
+- 公开 System Prompt 情报、AISPA 八维审计与 Prompt/UI 一致性分析
 - Mermaid 状态图、ER 图、时序图和产品全景图
 - 在具备安全浏览器或桌面控制能力时，自主采集、回读校验、去重并登记产品截图
 
@@ -38,10 +39,23 @@
 - Agent 的口头计划不等于工具已经调用。
 - 同时核验聊天、画布、任务状态、历史版本和实际资产。
 - 不声称读取隐藏思维链、官方 System Prompt 或不可见后端实现。
+- 公开 Prompt 和第三方审计只作为补充证据，并保留来源、版本、采集时间与人工/AI 标注类型。
 
 ## 使用方式
 
-将本仓库放入支持 Skills 的工作目录或个人 Skills 目录，然后调用：
+安装为个人 Skill：
+
+```bash
+git clone https://github.com/w93139/ai-product-teardown.git ~/.agents/skills/ai-product-teardown
+```
+
+或安装到当前仓库：
+
+```bash
+git clone https://github.com/w93139/ai-product-teardown.git .agents/skills/ai-product-teardown
+```
+
+然后调用：
 
 ```text
 使用 $ai-product-teardown，以只读、证据可追溯的方式拆解这个 AI 产品。
@@ -58,6 +72,34 @@
 | 完整拆解 | 如何形成端到端、可追溯的产品模型 | 上述交付物的分阶段组合与汇总报告 |
 
 只执行用户请求的模式，不会因为选择了用户旅程就自动继续还原 Prompt 或架构。
+
+## AIPM 竞品情报模块
+
+当拆解涉及 Agent 自主性、工具权限、身份透明、真实性、隐私、用户控制或安全边界时，Skill 可以按需查询公开的 [System Prompt Index](https://github.com/SystemPromptIndex/SystemPromptIndex) 审计记录，并使用 [AISPA](https://systempromptindex.ai/aispa) 八个维度形成竞品对比、产品需求和评测用例。
+
+该模块遵循三条边界：
+
+- UI、任务状态和实际资产仍然是产品行为的主要证据；
+- 公开 Prompt 不能自动证明真实性、时效性或生产环境行为；
+- 默认只查询相关审计片段和来源链接，不把完整第三方 Prompt corpus 打包进本仓库。
+
+示例：
+
+```text
+使用 $ai-product-teardown 拆解 Cursor，结合当前 UI 证据、官方资料和公开 Prompt，
+比较工具操作确认、用户控制和安全边界，并生成可执行评测用例。
+```
+
+也可以单独运行只读查询器：
+
+```bash
+python3 scripts/query_system_prompt_index.py "Cursor" \
+  --dimension D4 \
+  --span-type problematic \
+  --format markdown
+```
+
+首次未指定本地数据集时，脚本会把公开数据克隆到用户缓存目录；使用 `--repo <path>` 可以查询已有 checkout，使用 `--refresh` 可以快进更新缓存。输出包含数据集 commit、采集时间、来源链接和标注类型。
 
 ## 自主截图与证据采集
 
@@ -92,6 +134,7 @@ teardown/
 ```text
 ai-product-teardown/
 ├── LICENSE
+├── THIRD_PARTY_NOTICES.md
 ├── SKILL.md
 ├── agents/
 │   └── openai.yaml
@@ -100,9 +143,15 @@ ai-product-teardown/
 │   ├── architecture-framework.md
 │   ├── evidence-and-observation.md
 │   ├── screenshot-acquisition.md
+│   ├── system-prompt-intelligence.md
+│   ├── aispa-dimensions.md
 │   ├── html-delivery.md
 │   ├── report-and-visualization.md
 │   └── staged-execution-sop.md
+├── scripts/
+│   └── query_system_prompt_index.py
+├── tests/
+│   └── test_query_system_prompt_index.py
 └── assets/
     └── report-template.html
 ```
@@ -117,7 +166,17 @@ ai-product-teardown/
 - [`html-delivery.md`](references/html-delivery.md)：HTML 与 Mermaid 交付、渲染和检查要求。
 - [`report-and-visualization.md`](references/report-and-visualization.md)：答案优先的轻量报告结构、最小有效可视化与交付检查。
 - [`staged-execution-sop.md`](references/staged-execution-sop.md)：分阶段拆解、多交付物交接、验收门和版本变更控制。
+- [`system-prompt-intelligence.md`](references/system-prompt-intelligence.md)：公开 Prompt 的证据优先级、检索协议、UI 对照和版权边界。
+- [`aispa-dimensions.md`](references/aispa-dimensions.md)：AISPA 八维度、评分解释和产品经理输出契约。
+- [`query_system_prompt_index.py`](scripts/query_system_prompt_index.py)：带来源与数据版本的公开审计查询器。
 - [`report-template.html`](assets/report-template.html)：可复用的响应式 HTML 报告模板。
+
+## 验证
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 scripts/query_system_prompt_index.py "Cursor" --repo /path/to/SystemPromptIndex --limit 1
+```
 
 ## 能力边界
 
@@ -125,6 +184,6 @@ ai-product-teardown/
 
 ## 开源许可
 
-本项目采用 [MIT License](LICENSE)。你可以使用、复制、修改和分发本项目，但必须保留许可证和版权声明。
+本项目采用 [MIT License](LICENSE)。你可以使用、复制、修改和分发本项目，但必须保留许可证和版权声明。第三方数据和 Prompt 文本不由本项目重新授权，详见 [Third-Party Notices](THIRD_PARTY_NOTICES.md)。
 
 公开提交前请遵守 [Security Policy](SECURITY.md)，不要上传 Cookie、Token、密码、私有聊天、客户素材、未脱敏截图或其他敏感证据。

@@ -1,6 +1,15 @@
 .DS_Store
 .env
 .env.*
+.venv/
+__pycache__/
+.cache/
+work/
+outputs/
+teardown-runs/
+private-evidence/
+system-prompt-index-cache/
+*.log
 *.pem
 *.key
 *.p12
